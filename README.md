@@ -23,7 +23,7 @@ system monitor (`btop` by default, or `htop`).
 ## Installation
 
 ```bash
-omarchy plugin add https://github.com/mt-shihab26/omaspeedmeter.git --enable
+omarchy plugin add https://github.com/shafayetejaman/mt-shihab26.omaspeedmeter.git --enable
 ```
 
 To remove it:
