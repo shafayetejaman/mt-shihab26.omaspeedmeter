@@ -165,7 +165,12 @@ Panel {
         if (!root.bar)
             return;
 
-        root.bar.run("omarchy-launch-or-focus-tui " + Util.shellQuote(root.resolved.systemMonitor));
+        const whitelist = ["btop", "htop"];
+        const monitor = String(root.resolved.systemMonitor || "btop").trim();
+        if (whitelist.indexOf(monitor) === -1)
+            return;
+
+        root.bar.run("omarchy-launch-or-focus-tui " + monitor);
     }
 
     function refreshSection() {
