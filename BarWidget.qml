@@ -357,7 +357,11 @@ Panel {
 
     Timer {
         interval: Math.max(1, root.resolved.interval) * 1000
-        running: true
+        // Don't wake the shell process on an interval when every metric is
+        // disabled — refresh() would immediately become a no-op each tick.
+        running: root.resolved.cpu || root.resolved.mem || root.resolved.swap
+            || root.resolved.net || root.resolved.temp || root.resolved.gpu
+            || root.resolved.procs
         repeat: true
         triggeredOnStart: false
         onTriggered: root.refresh()
